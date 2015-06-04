@@ -1,0 +1,26 @@
+说明：
+1.提交错了一次，问题出现在 i,j的设置上；
+int MergetList(SqList L1,SqList L2,SqList &L3)
+{
+  int i=1,j=1,posi=1;
+  while(i<=L1.length && j<=L2.length)
+  {
+    if(L1.elem[i-1]<=L2.elem[j-1])
+    {
+      ListInsert_Sq(L3,posi,L1.elem[i-1]);
+      posi++;
+      i++;
+    }
+    else
+    {
+      ListInsert_Sq(L3,posi,L2.elem[j-1]);
+      posi++;
+      j++;
+    }
+  }
+  while(i<=L1.length){ListInsert_Sq(L3,posi,L1.elem[i-1]);i++;posi++;}
+  while(j<=L2.length){ListInsert_Sq(L3,posi,L2.elem[j-1]);j++;posi++;}
+  return OK;
+}
+
+之前设置为0，当LIST长度为0是不可正常运行，现改为1

@@ -1,0 +1,21 @@
+说明：
+
+
+
+
+
+
+注/释:
+1. 在book结构体里使用字符数组来定义name，author ，publiser，三者指向了同一个地址？？
+    char *name[];          
+    char *author[];
+    char *publisher[];
+   输入；
+    name: huang , autohr :hua  ,publiser: h
+   输出：
+    name: h     , autohr :h    ,publiser: h
+
+2. 字符串的输出，使用了gets。姑且这样用着吧....
+
+
+3.对文件读取的时候第一个元素会重复，原因未知，暂时在 Load_list中 p=L->next->next 修正

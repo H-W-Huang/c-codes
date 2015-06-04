@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1428389770 source:d:\app\cpp\fileoper.c
+	<stdio.h>
+	"datatype.h"
+
+1428389862 source:d:\app\cpp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"fileoper.h"
+	"menu.h"
+
+1428389851 d:\app\cpp\fileoper.h
+	"datatype.h"
+
+1428389703 source:d:\app\cpp\menu.c
+	<stdio.h>
+	<stdlib.h>
+
+1428389198 d:\app\cpp\menu.h
+
+1428389502 d:\app\cpp\datatype.h
+
+1428389862 source:i:\code2share\c\课程设计\cpp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"fileoper.h"
+	"menu.h"
+
+1428389851 i:\code2share\c\课程设计\cpp\fileoper.h
+	"datatype.h"
+
+1428389502 i:\code2share\c\课程设计\cpp\datatype.h
+
+1428389198 i:\code2share\c\课程设计\cpp\menu.h
+

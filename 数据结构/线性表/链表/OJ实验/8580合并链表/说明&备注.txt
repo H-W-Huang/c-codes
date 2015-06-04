@@ -1,0 +1,52 @@
+说明：
+
+
+
+
+
+备注:
+1. Status Merge_LinkedList(LinkList L1,LinkList L2,LinkList L3)
+        {
+          LinkList p1,p2,p3;
+          p1=L1->next;p2=L2->next;p3=L1;L3=L1;
+          while(p1!=NULL&&p2!=NULL)
+          {
+            if(p1->data<=p2->data)
+              {
+                p3=p1->next; p3=p1;
+                //printf("%d\n",p1->data );printf("%d\n",p3->data );
+                p1=p1->next;}
+            else 
+              {
+                p3=p2->next; p3=p2;
+                //printf("%d\n",p2->data );
+                p2=p2->next;}
+        
+            
+          }
+          if(p1!=NULL)
+            {
+              //printf("%d\n", p1->data);
+              p3->next=p1;
+            
+            }
+          if(p2!=NULL)
+            {
+              //printf("%d\n", p2->data);
+              p3->next=p2;
+            
+            }
+          //printf("%d\n",L3->next->data );
+          LoadLink_L(L3);
+          return OK;
+        }
+
+      之前一直报错，原因在于函数里为对L3做任何初始化，使得指针指向不明确。
+  SOLUTION："p3=L1;L3=L1;"
+
+  ##还有一点，跳出函数后未能对L3进行读取，只能在函数内读取，待解决。。。
+  #####update#### 
+  问题解决。。Status Merge_LinkedList(LinkList L1,LinkList L2,LinkList L3) 改为
+              Status Merge_LinkedList(LinkList L1,LinkList L2,LinkList &L3)。。。>_<
+
+2. 还错了一点啊：p3=p1->next; p3=p2->next; 什么鬼... 改为：p3->next=p1; p3->next=p2;

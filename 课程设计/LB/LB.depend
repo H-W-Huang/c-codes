@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1429423027 source:i:\code2share\c\课程设计\lb\main.c
+	<stdio.h>
+	<stdlib.h>
+	"menu.h"
+
+1429422999 i:\code2share\c\课程设计\lb\menu.h
+
+1429422979 source:i:\code2share\c\课程设计\lb\menu.c
+	<stdio.h>
+	<stdlib.h>
+

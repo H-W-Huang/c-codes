@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1430028776 source:i:\code2share\c\课程设计\lm\main.cpp
+	"stdio.h"
+	"menu.h"
+	"book.h"
+	"bm.h"
+
+1430028772 i:\code2share\c\课程设计\lm\menu.h
+	"book.h"
+	"bm.h"
+
+1430452380 source:i:\code2share\c\课程设计\lm\menu.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"book.h"
+	"bm.h"
+
+1430454716 source:i:\code2share\c\课程设计\lm\basic_manipulation.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"book.h"
+
+1430138868 source:i:\code2share\c\课程设计\lm\book.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1430028343 i:\code2share\c\课程设计\lm\book.h
+
+1430142302 i:\code2share\c\课程设计\lm\bm.h
+

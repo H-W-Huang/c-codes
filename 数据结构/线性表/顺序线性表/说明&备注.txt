@@ -1,0 +1,29 @@
+说明：
+1.在C语言里，函数的参数不能像C++一样用（&x）直接传递地址（这样在定义x变量是不需要将其定义为指针类型），
+  而要用指针，写作（*x）。
+2.函数中的参数： UnionList(SqList *L1,Sqlist L2),这样的做的准则是; *L 表示该变量将被改变；
+
+
+
+
+
+Quizs：
+Q1：1.Status UnionList(SqList *L1,Sqlist L2)
+{
+    int i,e;
+
+    for(i=1;i<=L2.length;i++)    //why!!!,这里的起点为i=1，否则输出了L2的地址！！！
+    {  
+        GetElem(L2,i,&e);
+        //printf("Now the current length of the list is %d\n", ListLength(*L1));
+        printf("%d  ",e);
+        if(LocateElem(*L1,e)==-1)
+        {
+            ListInsert(L1,L1->length,e);//在该函数里，插入一个，长度加1，所以不需要再增加长度
+            printf("-----Now the current length of the list is %d\n", ListLength(*L1));
+        }
+    }
+}
+
+A1:	
+       问题出现在Getelem上，输入i，获取的是i-1的值；（自己写的程序要一清二楚A!!!)

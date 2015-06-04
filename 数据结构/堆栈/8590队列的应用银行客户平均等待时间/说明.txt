@@ -1,0 +1,75 @@
+说明：
+思路：
+    对于每一个用户，一旦确定其办理时间，结合第一个进入的用户，办理完成的时间就可以得到
+        ( A:1 3 ,B:2 1, C:3 5; 由此可以知道A完成办理的时刻是 4，B 完成的时刻是 (4+1)=5 )
+    每一人的等待时间取决于他的 进入时间 和 在他之前的业务办理完成时刻 :
+        1. 若 之前的业务办理完成时刻 <= 他进入的时间 ----> 其等待时间为0
+        2. 否则 ，其等待时间为 之前的业务办理完成时刻-他进入的时间
+    对每一个人进行上述操作可以得到所有人的得到时间总和
+
+
+
+注释:
+double Average_time(int n)
+{
+    int m,i;
+    m=n;
+    double totaltime=0;
+    double t1,t2,t3,ttemp;
+    SqQueue Atime;
+    SqQueue Event;
+    double Avertime=0;
+    double timelist[n];
+    // timelist[0]=0;
+    InitQueue(Atime);
+    InitQueue(Event);
+    while(n--)
+    {
+        int Arr_time,Eventtime;
+        scanf("%d%d",&Arr_time,&Eventtime);
+        EnQueue(Atime,Arr_time);
+        EnQueue(Event,Eventtime);
+    }
+    DeQueue(Atime,t3);
+    // printf("==%lf\n", t2);
+    for(i=1;i<m;i++)
+    {
+        DeQueue(Event,t1);
+        totaltime+=t1;
+        // printf("totaltime==%lf\n", totaltime);
+        DeQueue(Atime,t2);
+        // printf("t2===%lf\n",t2);
+        ttemp=t3+totaltime;
+        if(ttemp<=t2) {Avertime+=0;totaltime+=(t2-ttemp);}
+        else {Avertime=Avertime+((t3+totaltime)-t2);/*printf("%lf\n", t3+totaltime);printf("%lf\n", ttemp-t2);*/}
+        // printf("Avertime==%lf\n", Avertime);
+    }
+    // printf("%lf\n", Avertime/m);
+    return Avertime/m;
+}   
+inputs： 
+10
+1 4
+4 2
+6 4
+8 1
+9 2
+12 5
+20 10
+25 2
+30 5
+35 9
+
+output : 1.60 ( x )
+correct answer: 1.90
+
+之前的得到错误的答案的原因在于：
+    对totaltime的处理不完整,total的意义是业务办理的总时间；
+        当 之前的业务办理完成时刻 <= 他进入的时间 是如果没有 totaltime+=(t2-ttemp)的话，整个完成时刻将提前
+        (   A       B         C        D
+            1       3         8        9    每个人对因的进入时刻
+              4       2           3         每个人对应的业务办理时间
+                  5        7      10( x ) 11       业务完成时刻 (5=4+1,7=4+2+1)
+          如果没有加上8点到7点之前这段空白时间的话，办理完成时刻将提前
+          10是错误的，推一下就知道 1--(4)--5---(2)---7--(1:空白时间)----8---(3)----11
+        )

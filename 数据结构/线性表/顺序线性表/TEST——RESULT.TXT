@@ -1,0 +1,78 @@
+   1|A Sequence List Has Created.
+   2|1:Insert element
+   3|2:Delete element
+   4|3:Load all elements
+   5|0:Exit
+   6|Please choose:
+   7|Insert Error!
+   8|1:Insert element
+   9|2:Delete element
+  10|3:Load all elements
+  11|0:Exit
+  12|Please choose:
+  13|The Element 5 is Successfully Inserted!
+  14|1:Insert element
+  15|2:Delete element
+  16|3:Load all elements
+  17|0:Exit
+  18|Please choose:
+  19|Delete Error!
+  20|1:Insert element
+  21|2:Delete element
+  22|3:Load all elements
+  23|0:Exit
+  24|Please choose:
+  25|The Element 5 is Successfully Deleted!
+  26|1:Insert element
+  27|2:Delete element
+  28|3:Load all elements
+  29|0:Exit
+  30|Please choose:
+  31|The Element 5 is Successfully Inserted!
+  32|1:Insert element
+  33|2:Delete element
+  34|3:Load all elements
+  35|0:Exit
+  36|Please choose:
+  37|The Element 8 is Successfully Inserted!
+  38|1:Insert element
+  39|2:Delete element
+  40|3:Load all elements
+  41|0:Exit
+  42|Please choose:
+  43|The Element 9 is Successfully Inserted!
+  44|1:Insert element
+  45|2:Delete element
+  46|3:Load all elements
+  47|0:Exit
+  48|Please choose:
+  49|The List is: 9 8 5
+  50|1:Insert element
+  51|2:Delete element
+  52|3:Load all elements
+  53|0:Exit
+  54|Please choose:
+  55|The Element 5 is Successfully Deleted!
+  56|1:Insert element
+  57|2:Delete element
+  58|3:Load all elements
+  59|0:Exit
+  60|Please choose:
+  61|The Element 8 is Successfully Deleted!
+  62|1:Insert element
+  63|2:Delete element
+  64|3:Load all elements
+  65|0:Exit
+  66|Please choose:
+  67|The Element 9 is Successfully Deleted!
+  68|1:Insert element
+  69|2:Delete element
+  70|3:Load all elements
+  71|0:Exit
+  72|Please choose:
+  73|The List is empty!
+  74|1:Insert element
+  75|2:Delete element
+  76|3:Load all elements
+  77|0:Exit
+  78|Please choose:

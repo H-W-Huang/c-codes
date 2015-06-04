@@ -1,0 +1,5 @@
+1.
+printf("%d %d %d %d \n",count,count++,count++,count++ );
+    //计算顺序是从右往左的！
+
+2.
