@@ -74,7 +74,7 @@ void search(int cur)
                 for(int j=0;j<cur;j++)  // j 表示 cur之前的 0 ～ cur-1行的皇后
                     //核心判断
                     // 依次为 是否在同一列上？ 是否在同一主对角线上?　　是否在同一副对角线上？
-                    if(c[cur]==c[j]||c[cur]-cur==c[j]-j||cur+c[cur]==j+c[j])
+                    if(c[cur]==c[j]||cur-c[cur]==j-c[j]||cur+c[cur]==j+c[j])
                         { ok=0; break; }//一旦与前边的有冲突，后面的也就不用在看了。此为剪枝 
                 if(ok) search(cur+1); //如果之前的是没有冲突的话，对cur继续上边的过程 
                 //注意这一句是单个递归调用的最后判断，不属于上个循环
