@@ -43,12 +43,19 @@
 #include"malloc.h" /* malloc()等 */ 
 #include"stdio.h" /* EOF(=^Z或F6),NULL */ 
 #include"stdlib.h" /* exit() */ 
+
+
 typedef int InfoType; /* 顶点权值类型 */ 
 #define MAX_NAME 3 /* 顶点字符串的最大长度+1 */ 
 typedef char VertexType[MAX_NAME]; /* 字符串类型 */ 
 /*图的邻接表存储表示 */ 
 #define MAX_VERTEX_NUM 20 
+
+
 typedef enum{DG,DN,AG,AN}GraphKind; /* {有向图,有向网,无向图,无向网} */ 
+
+
+//定义弧结点(结点？)类型
 typedef struct ArcNode 
 { 
     int adjvex; /* 该弧所指向的顶点的位置 */ 
@@ -56,11 +63,15 @@ typedef struct ArcNode
     InfoType *info; /* 网的权值指针） */ 
 }ArcNode; /* 表结点 */ 
 
+
+//定义结点类型
 typedef struct 
 { 
     VertexType data; /* 顶点信息 */ 
     ArcNode *firstarc; /* 第一个表结点的地址,指向第一条依附该顶点的弧的指针 */ 
 }VNode,AdjList[MAX_VERTEX_NUM]; /* 头结点 */ 
+
+
 
 typedef struct 
 { 
@@ -69,6 +80,7 @@ typedef struct
     int kind; /* 图的种类标志 */ 
 }ALGraph; 
 
+//定位结点的位置
 int LocateVex(ALGraph G,VertexType u) 
 { /* 初始条件: 图G存在,u和G中顶点有相同特征 */ 
 /* 操作结果: 若G中存在顶点u,则返回该顶点在图中位置;否则返回-1 */ 
@@ -79,6 +91,9 @@ int LocateVex(ALGraph G,VertexType u)
     return -1; 
 } 
 
+
+
+// 此程序中，图是存放在邻接表中的
 void CreateGraph(ALGraph *G) 
 { /* 采用邻接表存储结构,构造没有相关信息的图G(用一个函数构造4种图) */ 
     int i,j,k; 
@@ -180,14 +195,19 @@ void DFS(ALGraph G,int v)
 /* 设置访问标志为TRUE(已访问) */ 
 /* 访问第v个顶点 */ 
 /* 对v的尚未访问的邻接点w递归调用DFS */ 
-
-} 
+    visited[v]=TRUE;  //将访问的元素标记已访问
+    VisitFunc(v);
+    for(int w=FirstAdjVex(G,v);w>0;w=NextAdjVex(G,v,w))
+        if(!visited[w]) DFS(G,w);
+}  
 void DFSTraverse(ALGraph G,void(*Visit)(char*)) 
 { /* 对图G作深度优先遍历。算法7.4 */ 
 /* 使用全局变量VisitFunc,使DFS不必设函数指针参数 */ 
 /* 访问标志数组初始化 */ 
 /* 对尚未访问的顶点调用DFS */ 
-
+    VisitFunc =Visit;
+    for(VertexType v=0;v<G.vexnum;v++) visited[v]=0;
+    for(VertexType v=0;v<G.vexnum;v++) if(!visited[v]) DFS(G,v);
     printf("\n"); 
 } 
 
