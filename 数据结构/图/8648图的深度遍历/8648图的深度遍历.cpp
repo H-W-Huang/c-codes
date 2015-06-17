@@ -196,8 +196,8 @@ void DFS(ALGraph G,int v)
 /* 访问第v个顶点 */ 
 /* 对v的尚未访问的邻接点w递归调用DFS */ 
 	visited[v]=1;  //将访问的元素标记已访问
-	VisitFunc(G[v].data);
-	for(int w=FirstaaAdjVex(G,G[v].data); w>=0; w++ ) w=NextAdjVex(G,v,w))
+	VisitFunc(G.vertices[v].data);
+	for(int w=FirstAdjVex(G,G.vertices[v].data); w>=0;w=NextAdjVex(G,G.vertices[v].data,G.vertices[w].data) ) 
 		if(!visited[w]) DFS(G,w);
 }
   
@@ -207,11 +207,12 @@ void DFSTraverse(ALGraph G,void(*Visit)(char*))
 /* 访问标志数组初始化 */ 
 /* 对尚未访问的顶点调用DFS */ 
     VisitFunc=Visit;
-    for(int v=0;v<G.vexnum;v++) visited[i]=0; //先讲各个元素设定为未访问；
-    for(int v=0;v<G.vexnum;v++) 
+    int v;
+    for(v=0;v<G.vexnum;v++) visited[v]=0; //先讲各个元素设定为未访问；
+    for(v=0;v<G.vexnum;v++) 
     {
     	//对于一个元素，要是未访问过，对其进行深度遍历
-    	if(visited[i]==0)
+    	if(visited[v]==0)
     	{
     		DFS(G,v);
     	}
