@@ -322,7 +322,7 @@ int Switch_children(Tree T)
 //树为空时，返回
 //比较左右子树深度，返回较大的一个
 
-int Deep_of_Tree(Tree T)
+int Depth_of_Tree(Tree T)
 {   
     int len1=0,len2=0;
     if(T==NULL) return 0;
