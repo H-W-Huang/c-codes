@@ -327,8 +327,8 @@ int Depth_of_Tree(Tree T)
     int len1=0,len2=0;
     if(T==NULL) return 0;
     // else if(!T->lchild&&!T->rchild) return 1;
-    len1=Deep_of_Tree(T->lchild);
-    len2=Deep_of_Tree(T->rchild);
+    len1=Depth_of_Tree(T->lchild);
+    len2=Depth_of_Tree(T->rchild);
     if(len1>len2) return len1+1;else return len2+1;
 }
 
