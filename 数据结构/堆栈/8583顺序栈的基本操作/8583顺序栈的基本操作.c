@@ -22,7 +22,7 @@ Status InitStack(SqStack &S)
   // if(S==NULL) return ERROR;
   S.base=(SElemType *)malloc(STACKINCREMENT*sizeof(SElemType));
   if(S.base==NULL) return ERROR;
-  S.top=S.base;
+  S.top=S.base; //初始化后的栈，栈顶和栈底重合，表示没有元素
   S.stacksize=STACK_INIT_SIZE;
   return OK; 
 }
@@ -32,7 +32,7 @@ Status Push(SqStack &S,SElemType e)
 
   if(S.base==NULL) return ERROR;
   //检查是否满栈
-  if(S.top==&S.base[S.stacksize])
+  if(S.top==S.base[S.stacksize])
   {
     S.base=(SElemType *)realloc(S.base,(S.stacksize+STACKINCREMENT)*sizeof(SElemType)); 
     if(S.base==NULL) return ERROR;
