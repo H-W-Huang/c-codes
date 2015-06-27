@@ -64,7 +64,7 @@ int Select_Sort(int *a,int n)
     int i,j,min=0;
     for(i=1;i<=n-1;i++)
     {
-        a[0]=a[i];
+        a[0]=a[i]; //a[0]临时元素
         min=i;
         for(j=i;j<=n;j++) if(a[j]<=a[min]) min=j;
         a[i]=a[min];

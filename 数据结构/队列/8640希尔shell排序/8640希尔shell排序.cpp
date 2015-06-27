@@ -56,7 +56,7 @@ int Shell_Sort(int *a,int n,int len)
     {
         if(a[i]<a[i-dk])
         {
-            a[0]=a[i];
+            a[0]=a[i]; //暂时存起
             //出错，问题出现在这个条件的设置上: 1. j必须大于0 ； 2， 每一次比较都是与a[0]比较
             // for(j=i-dk;j>=dk;j-=dk) a[j+dk]=a[j];
             //3. i要跑到len啊...
@@ -68,19 +68,65 @@ int Shell_Sort(int *a,int n,int len)
     return 0;
 }
 
+// int Shell_sort()
+// {
+//     int dk=n/2;
+//     if(dk==0) return 0;
+//     for(i=dk+1;i<=len;i++)
+//     {
+//         if(a[i]<a[i=dk])
+//         {
+//             a[0]=a[i];
+//             for(j=i-dk;j>0&&a[0]<a[j];j-=dk)
+//             {
+//                 a[j+dk]=a[j];
+//             }
+//             a[j+dk]=a[0];
+//         }
+//     }
+// }
+
+
+
+
+int shell(int a[],int dk,int n)
+{
+    int i,j;
+    for(i=dk+1;i<=n;i++)
+    {
+        if(a[i]<a[i-dk])
+        {
+            a[0]=a[i];
+            for(j=i-dk;j>0 && a[0]<a[j] ; j-=dk)
+                a[j+dk]=a[j];
+            a[j+dk]=a[0];
+        }
+    }
+}
+
+int shellsoe(int a[],int n)
+{
+    int dk=n/2;
+    while(dk)
+    {
+        shell(a,dk,n);
+        dk/=2;
+    }
+}
+
 int main()
 {
     int a[30],n,i;
     scanf("%d",&n);
     int len=n;
     for(i=1;i<=n;i++) scanf("%d",&a[i]);
-    while(n)
-    {
-        // printf("n==%d\n",n );
-        Shell_Sort(a,n,len);
-        n=n/2;
-    }
-    // for(i=1;i<=len;i++) printf("%d ",a[i]); putchar('\n');
-
+    // while(n)
+    // {
+    //     // printf("n==%d\n",n );
+    //     Shell_Sort(a,n,len);
+    //     n=n/2;
+    // }
+        shellsoe(a,n);
+    for(i=1;i<=len;i++) printf("%d ",a[i]); putchar('\n');
     return 0;
 }

@@ -81,7 +81,7 @@ int Heap_Adjust(int a[],int s,int m)
 int Heap_sort(int a[],int n)
 {
     int i,temp;
-    for(i=n/2;i>0;i--)  //对非树叶的结点进行调整
+    for(i=n/2;i>0/*i>=1*/;i--)  //对非树叶的结点进行调整
         Heap_Adjust(a,i,n);
     for(i=n;i>1;i--)  //调整的顺序是自下而上的
         {temp=a[i]; a[i]=a[1]; a[1]=temp; Heap_Adjust(a,1,i-1);for(int i=1;i<=n;i++) printf("%d ",a[i] );putchar('\n'); }            
