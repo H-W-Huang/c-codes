@@ -19,6 +19,7 @@ Status InitQueue(SqQueue &Q)
     if(Q.base==NULL) return ERROR;
     Q.rear=0;
     Q.front=0;
+    //与栈不同，栈的top和base定义时定义为两个指针，而队列的rear和front定义为下标
     return OK;
 }
 
@@ -34,17 +35,20 @@ Status Destory_SqQuene(SqQueue &Q)
 
 Status EnQueue(SqQueue &Q,QElemType e)
 {
-        if(Q.base==NULL) return ERROR;             //检查是否为无效队列
-        if(((Q.rear)+1)%MAXQSIZE==Q.f) return ERROR;   //检查是否溢出,这里使用课上介绍的方法,少用一个元素
-        //if((Q.rear-Q.front)+1==MAXQSIZE-1) Q.rear=0;             //
-        //Q.base[Q.rear++]=e;
-        //上面两条语句等价于
-        return OK;
+    if(Q.base==NULL) return ERROR;             //检查是否为无效队列
+    if(((Q.rear)+1)%MAXQSIZE==Q.front) return ERROR;   //检查是否溢出,这里使用课上介绍的方法,少用一个元素
+    //if((Q.rear-Q.front)+1==MAXQSIZE-1) Q.rear=0;             //
+    Q.base[Q.rear++]=e;
+    //上面两条语句等价于
+    Q.rear=(Q.rear+1)%MAXQSIZE;
+    return OK;
 }
 Status DeQueue(SqQueue &Q,QElemType &e)
 {
     if(Q.base==NULL) return ERROR;
-    e=Q.base[Q.front++];
+    if(Q.rear==Q.front) return ERROR;
+    e=Q.base[Q.front];
+    Q.front = 0(Q.front+1)%MAXQSIZE;
     return OK;
 
 }

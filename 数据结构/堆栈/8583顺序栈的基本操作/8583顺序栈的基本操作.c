@@ -32,7 +32,7 @@ Status Push(SqStack &S,SElemType e)
 
   if(S.base==NULL) return ERROR;
   //检查是否满栈
-  if(S.top==S.base[S.stacksize])
+  if(S.top==&S.base[S.stacksize])
   {
     S.base=(SElemType *)realloc(S.base,(S.stacksize+STACKINCREMENT)*sizeof(SElemType)); 
     if(S.base==NULL) return ERROR;
@@ -41,7 +41,6 @@ Status Push(SqStack &S,SElemType e)
   *S.top=e;
   S.top++;
   return OK;
-    
 }
 
 Status Pop(SqStack &S,SElemType &e)   
@@ -49,7 +48,7 @@ Status Pop(SqStack &S,SElemType &e)
 // 若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR
 // 请补全代码
   if(S.base==NULL) return ERROR;
-  if(S.base==S.top) return ERROR;
+  if(S.base==S.top) return ERROR;  //栈空检查
   e=*(S.top-1);
   S.top--;
   return OK;
@@ -65,7 +64,7 @@ Status GetTop(SqStack S,SElemType &e)
     return OK;
 }
 
-int StackLength(SqStack S) 
+int StackLength(SqStack S)
 {
   // 返回栈S的元素个数
   // 请补全代码
@@ -79,6 +78,7 @@ int StackLength(SqStack S)
     }
 } 
 
+
 Status StackTraverse(SqStack S)
 {
 // 从栈顶到栈底依次输出栈中的每个元素
@@ -88,7 +88,7 @@ Status StackTraverse(SqStack S)
     else
     {
         printf("The Stack is: ");
-        p--;
+        p--; 
         while((p+1)!=S.base)            //请填空
         {
             printf("%d ", *p);
